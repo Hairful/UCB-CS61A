@@ -45,6 +45,10 @@ def tail_points(opponent_score):
     """
     # BEGIN PROBLEM 2
     "*** YOUR CODE HERE ***"
+    ones = opponent_score % 10
+    opponent_score = opponent_score // 10
+    tens = opponent_score % 10
+    return 2 * abs(tens - ones) + 1
     # END PROBLEM 2
 
 
