@@ -24,7 +24,16 @@ def num_eights(pos):
     ...       ['Assign', 'AnnAssign', 'AugAssign', 'NamedExpr', 'For', 'While'])
     True
     """
-    "*** YOUR CODE HERE ***"
+    if pos < 10:
+        if pos == 8:
+            return 1
+        else:
+            return 0
+    else:
+        if pos % 10 == 8:
+            return 1 + num_eights(pos // 10)
+        else:
+            return num_eights(pos // 10)
 
 
 def pingpong(n):
@@ -60,7 +69,7 @@ def pingpong(n):
     ...       ['Assign', 'AnnAssign', 'AugAssign', 'NamedExpr'])
     True
     """
-    "*** YOUR CODE HERE ***"
+
 
 
 def next_larger_coin(coin):
