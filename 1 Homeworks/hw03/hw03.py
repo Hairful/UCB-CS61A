@@ -69,6 +69,25 @@ def pingpong(n):
     ...       ['Assign', 'AnnAssign', 'AugAssign', 'NamedExpr'])
     True
     """
+    def check_eight(n):
+        if num_eights(n) or n % 8 == 0:
+            return True
+        return False
+
+    def inner_func(m, increase):
+        if m == n + 1:
+            return 0
+        elif increase:
+            if check_eight(m):
+                return inner_func(m + 1, False) + 1
+            else:
+                return inner_func(m + 1, True) + 1
+        else:
+            if check_eight(m):
+                return inner_func(m + 1, True) - 1
+            else:
+                return inner_func(m + 1, False) - 1
+    return inner_func(1, True)
 
 
 
@@ -125,15 +144,24 @@ def count_coins(change):
     >>> check(HW_SOURCE_FILE, 'count_coins', ['While', 'For'])
     True
     """
-    "*** YOUR CODE HERE ***"
+    def inner_func(change, smallest_coin):
+        if change == 0:
+            return 1
+        if change < 0:
+            return 0
+        if smallest_coin == None:
+            return 0
+        without_coin = inner_func(change, next_larger_coin(smallest_coin))
+        with_coin = inner_func(change - smallest_coin, smallest_coin)
+        return without_coin + with_coin
+    return inner_func(change, 1)
 
 
 anonymous = False  # Change to True if you would like to remain anonymous on the final leaderboard.
 
 
 def beaver(f):
-    "*** YOUR CODE HERE ***"
-    __________________
+    (lambda g: g(g(g(g(g(g(g(f))))))))(lambda f: lambda: f() or f() or f())()
 
 
 def beaver_syntax_check():
